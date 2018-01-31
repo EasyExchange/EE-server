@@ -7,6 +7,7 @@
 2. 数据库迁移：rails db:migrate 
 3. 插入测试数据：rails db:seed
 4. 开启服务器：rails server 
+
 ##外部交互
 1.	物品搜索： /search
 * request：物品名称（全匹配）
