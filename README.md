@@ -1,12 +1,12 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
 * Rails version: 5.1.4
 
+##部署方法
+1. down到本地，在项目根目录打开命令行窗口
+2. 数据库迁移：rails db:migrate 
+3. 插入测试数据：rails db:seed
+4. 开启服务器：rails server 
 ##外部交互
 1.	物品搜索： /search
 * request：物品名称（全匹配）

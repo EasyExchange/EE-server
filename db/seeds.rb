@@ -7,6 +7,16 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 users = User.create([
     {
+        name:"dc",
+        tel:"13011853993",
+        address:"七公寓二单元"
+    },
+    {
+        name:"yan",
+        tel:"18800006666",
+        address:"七公寓二单元"
+    },
+	{
         name:"MissLi",
         tel:"18390918465",
         address:"七公寓二单元"
@@ -20,6 +30,15 @@ users = User.create([
 
 Item.create([
     {
+	    name:'机器学习',
+        detail:'著名的西瓜书，作者是周志华老师',
+        original_price:88,
+        second_price:80,
+        wear_level:0,
+        tag:"专业书",
+        user_id:1
+	},
+	{
         name:'迷你煮锅',
         detail:'功率友好，不会跳闸，开小灶利器',
         original_price:55,
@@ -40,6 +59,12 @@ Item.create([
 ])
 
 Message.create([
+    {
+	    item_id:1,
+        sender_id:2,
+        receiver_id:1,
+        content:"你的书我看上了，能便宜点吗"
+	},
     {
         item_id:1,
         sender_id:4,
