@@ -1,4 +1,4 @@
-# README
+## 本项目已部署至heroku 地址：https://eeserver.herokuapp.com/
 
 * Rails version: 5.1.4
 
@@ -64,4 +64,14 @@
 5. 新增消息功能路由为  /new_message
 6. 一切和时间有关的字段均未处理（初步想法：使用数据库中自带的字段created_at和updated_at）
 
-
+### 2018-02-02更改说明：
+1. 更改gemfile，将
+> gem 'sqlite3'
+   替换为
+> group :development do
+   gem 'sqlite3'
+  end
+  group :production do
+   gem 'pg'
+  end
+  参考https://guides.railsapps.org/rails-deploy-to-heroku.html
