@@ -1,4 +1,4 @@
-## 本项目已部署至heroku 地址：https://eeserver.herokuapp.com/
+### 本项目已部署至heroku 地址：https://eeserver.herokuapp.com/
 
 * Rails version: 5.1.4
 
@@ -66,12 +66,21 @@
 
 ### 2018-02-02更改说明：
 1. 更改gemfile，将
-> gem 'sqlite3'
-   替换为
-> group :development do
-   gem 'sqlite3'
-  end
-  group :production do
-   gem 'pg'
-  end
-  参考https://guides.railsapps.org/rails-deploy-to-heroku.html
+
+       gem 'sqlite3'
+
+    替换为
+    
+       group :development do
+          
+         gem 'sqlite3' 
+                
+       end
+              
+       group :production do
+              
+         gem 'pg'
+                
+       end
+              
+    参考https://guides.railsapps.org/rails-deploy-to-heroku.html
