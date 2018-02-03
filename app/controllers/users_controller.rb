@@ -25,6 +25,7 @@ class UsersController < ApplicationController
       end
     else
       render json: @user
+    end
   end
 
   # PATCH/PUT /users/1
