@@ -50,7 +50,7 @@ class ItemsController < ApplicationController
     render json: @response
   end
   
-  def upload_pic
+  def upload_picture
     @item = Item.find(params[:id])
     @item.picture = params[:picture]
     if @item.save
