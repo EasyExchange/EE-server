@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   def create_or_get_user
     @user = User.find_by(name:params[:name])
     if (@user == nil)
-      @user = User.new(:name => params[:name])
+      @user = User.new(:name => params[:name], :profile => params[:profile])
       if @user.save
         render json: @user, status: :created, location: @user
       else
