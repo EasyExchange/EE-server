@@ -49,6 +49,16 @@ class ItemsController < ApplicationController
     @response = @item.as_json(include: :user)
     render json: @response
   end
+  
+  def upload_pic
+    @item = Item.find(params[:id])
+    @item.picture = params[:picture]
+    if @item.save
+      render json: "upload picture success"
+    else
+      render json: @item.errors, status: :unprocessable_entity
+    end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
