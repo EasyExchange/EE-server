@@ -53,9 +53,16 @@
 * request：post 物品id+发送者id+接收者id+留言内容
 * response：成功 success；失败 错误信息
 
-### 内部交互
-1.	获得授权用户信息（新建用户）
+12.    上传图片:  /upload_pic
+* request：post 物品id+上传物品图片（一张）
+* response：成功 success；失败 错误信息
 
+### 内部交互
+1.	获得授权用户信息（新建或更新用户） /create_or_get_user
+* request：post 用户name+上传用户头像
+* response：对应user
+
+************************
 ### 2018-01-31更改说明：
 1. 物品没有加“手机”、“地址”字段
 2. 物品和另一个物品图片表相关联，实现一对多（暂缓实现，目前在物品表中有一个picture字段）
@@ -84,3 +91,7 @@
        end
               
     参考https://guides.railsapps.org/rails-deploy-to-heroku.html
+ 
+ ### 2018-02-03更改说明：
+ 1. 实现上传图片功能，使用gem carrierwave（https://github.com/carrierwaveuploader/carrierwave）
+ 2. 将所有find改成find_by，因为find没有查询到结果，会抛出一个ActiveRecord::RecordNotFound异常，而find_by没有查询到结果，会返回nil
