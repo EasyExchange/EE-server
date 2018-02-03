@@ -44,27 +44,27 @@ class UsersController < ApplicationController
 
   # GET /me
   def me
-    @user = User.find(params[:user_id])
+    @user = User.find_by(id:params[:id])
     render json: @user
   end
 
   # GET /me/posted
   def me_posted
-    @user = User.find(params[:user_id])
+    @user = User.find_by(id:params[:id])
     @items = Item.where("user_id = ?", @user.id)
     render json: @items
   end
 
   # GET /me/message
   def me_message
-    @user = User.find(params[:user_id])
+    @user = User.find_by(id:params[:id])
     @messages = Message.where("receiver_id = ?", @user.id)
     render json: @messages
   end
 
   # PATCH/PUT /me/update
   def me_update
-    @user = User.find(params[:id])
+    @user = User.find_by(id:params[:id])
     if @user.update_attributes(:name => params[:name], :profile => params[:profile], 
       :tel => params[:tel], :address => params[:address])
       render json: "success"
@@ -76,7 +76,7 @@ class UsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.find(params[:id])
+      @user = User.find_by(id:params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.

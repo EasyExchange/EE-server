@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :items
   match 'search', :to => 'items#search', :via => [:get], :as => 'search'
   match 'new', :to => 'items#create', :via => [:post], :as => 'new'
-  match 'upload_picture', :to => 'items#upload_picture', :via => [:post], :as => 'upload_picture'
+  match 'upload_pic', :to => 'items#upload_pic', :via => [:post], :as => 'upload_pic'
 
   resources :itempics
   resources :messages
