@@ -45,7 +45,7 @@ class ItemsController < ApplicationController
 
   # GET /search
   def search
-    @item = Item.where("name = ?", params[:item_name])
+    @item = Item.where("name LIKE '%#{params[:item_name]}%'")
     @response = @item.as_json(include: :user)
     render json: @response
   end
@@ -58,6 +58,12 @@ class ItemsController < ApplicationController
     else
       render json: @item.errors, status: :unprocessable_entity
     end
+  end
+  
+  # GET /picture
+  def picture
+    picture = params[:picture_name]
+    send_file "#{Rails.root}/public#{picture}"
   end
 
   private

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   match 'search', :to => 'items#search', :via => [:get], :as => 'search'
   match 'new', :to => 'items#create', :via => [:post], :as => 'new'
   match 'upload_pic', :to => 'items#upload_pic', :via => [:post], :as => 'upload_pic'
+  match 'picture', :to => 'items#picture', :via => [:get], :as => 'picture'
 
   resources :itempics
   resources :messages
@@ -15,6 +16,7 @@ Rails.application.routes.draw do
   match 'me/message', :to => 'users#me_message', :via => [:get], :as => 'me/message'
   match 'me/update', :to => 'users#me_update', :via => [:put], :as => 'me/update'
   match 'create_or_get_user', :to => 'users#create_or_get_user', :via => [:post], :as => 'create_or_get_user'
+  match 'profile', :to => 'users#profile', :via => [:get], :as => 'profile'
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

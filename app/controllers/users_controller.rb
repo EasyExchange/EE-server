@@ -73,6 +73,12 @@ class UsersController < ApplicationController
     end
   end
 
+  # GET /profile
+  def profile
+    user = User.find_by(id:params[:id])
+    send_file "#{Rails.root}/public#{user.profile.url}"
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
