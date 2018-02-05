@@ -92,6 +92,40 @@
               
     参考https://guides.railsapps.org/rails-deploy-to-heroku.html
  
- ### 2018-02-03更改说明：
- 1. 实现上传图片功能，使用gem carrierwave（https://github.com/carrierwaveuploader/carrierwave）
- 2. 将所有find改成find_by，因为find没有查询到结果，会抛出一个ActiveRecord::RecordNotFound异常，而find_by没有查询到结果，会返回nil
+### 2018-02-03更改说明：
+1. 实现上传图片功能，使用gem carrierwave（https://github.com/carrierwaveuploader/carrierwave）
+2. 将所有find改成find_by，因为find没有查询到结果，会抛出一个ActiveRecord::RecordNotFound异常，而find_by没有查询到结果，会返回nil
+
+### 2018-02-04更改说明：
+1. 增加下载图片/查看图片功能
+ 
+    picture.url里保存的是服务器中图片的存储路径，客户端无法直接访问这个路径来获得图片，故需要另写一个请求图片下载地址的方法，方法中主要起作用的函数为：
+
+       send_file "#{Rails.root}/public#{item.picture.url}"
+  
+### 2018-02-05更改说明：
+1. as_json的使用方法
+
+    模型关系为：
+    
+       item belongs_to user
+       
+       item has_many messages
+     
+    * 要在返回的json中把user作为item的一个字段加入，则方法如下：
+       
+          render json: @item.as_json(include: :user)  
+          
+    * 要在返回的json中把messages作为item的一个字段加入，则方法如下：
+    
+          render json: @item.as_json(include: :user)
+    
+    * 要在返回的json中把user和messages都加入，则方法如下：
+    
+          render json: @item.as_json(:methods => [:user], :include => [:messages])
+          
+2. 改变rails的服务器时区
+
+       config.time_zone = 'Beijing' # rails系统对显示时间的默认设置
+       
+       config.active_record.default_timezone = :local #决定active_record对数据库交互的时区设置，也就是影响created_at和updated_at在数据库的记录时间，只有两个参数:utc和:local，rails初始化时默认是utc，所以默认保存到数据库的时间是utc时间。值改成local则表示数据库存储使用当地时间
