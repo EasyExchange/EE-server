@@ -3,9 +3,9 @@ class ItemsController < ApplicationController
 
   # GET /items
   def index
-    @items = Item.all
-
-    render json: @items
+    @items = Item.where("state = 1")
+    @response = @items.as_json(include: :user)
+    render json: @response
   end
 
   # GET /items/1
@@ -45,7 +45,7 @@ class ItemsController < ApplicationController
 
   # GET /search
   def search
-    @item = Item.where("name LIKE '%#{params[:item_name]}%'")
+    @item = Item.where("name LIKE '%#{params[:item_name]}%' and state = 1")
     @response = @item.as_json(include: :user)
     render json: @response
   end

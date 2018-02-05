@@ -64,7 +64,7 @@ class UsersController < ApplicationController
   def me_message
     @user = User.find_by(id:params[:id])
     @messages = Message.where("receiver_id = ?", @user.id)
-    render json: @messages
+    render json: @messages.as_json(:methods => [:item], :include => [:sender])
   end
 
   # PATCH/PUT /me/update
