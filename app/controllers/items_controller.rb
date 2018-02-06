@@ -18,7 +18,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(:name => params[:name], :detail => params[:detail], :original_price => params[:original_price], 
     :second_price => params[:second_price], :wear_level => params[:wear_level], :tag => params[:tag], 
-    :state => params[:state], :user_id => params[:user_id], :picture => params[:picture])
+    :state => 1, :user_id => params[:user_id], :picture => params[:picture])
 
     if @item.save
       render json: "success"
