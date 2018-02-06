@@ -13,7 +13,7 @@ class MessagesController < ApplicationController
     render json: @message
   end
 
-  # POST /items/#id
+  # POST /messages
   def create
     @message = Message.new(:item_id => params[:item_id], :sender_id => params[:sender_id], :receiver_id => params[:receiver_id], :content => params[:content])
 

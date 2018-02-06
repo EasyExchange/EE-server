@@ -10,7 +10,7 @@ class ItemsController < ApplicationController
 
   # GET /items/1
   def show
-    @response = @item.as_json(:methods => [:user], :include => [:messages])
+    @response = @item.as_json(methods: :user, include: { messages: {include: { sender: {only: :name}}}})
     render json: @response
   end
 
